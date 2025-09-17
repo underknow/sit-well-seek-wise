@@ -1,12 +1,318 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { ChevronDown, Star, TrendingUp, Zap, Shield, Award, Armchair, Monitor, Headphones, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ProductCard } from "@/components/ProductCard";
+import { SearchBar } from "@/components/SearchBar";
+import { CategoryGrid } from "@/components/CategoryGrid";
+import { ComparisonTable } from "@/components/ComparisonTable";
+import { ProductRadarChart } from "@/components/RadarChart";
+import heroChair from "@/assets/hero-chair.jpg";
+import standingDesk from "@/assets/standing-desk.jpg";
+import accessories from "@/assets/accessories.jpg";
 
 const Index = () => {
+  const [selectedProducts, setSelectedProducts] = useState([]);
+
+  // Sample data
+  const featuredProducts = [
+    {
+      id: "1",
+      name: "AeroMax Pro",
+      brand: "ErgoTech",
+      image: heroChair,
+      rating: 4.8,
+      reviewCount: 234,
+      price: "599€",
+      originalPrice: "799€",
+      category: "Chaise Ergonomique",
+      isRecommended: true,
+      isBestSeller: true,
+      pros: ["Support lombaire ajustable", "Accoudoirs 4D", "Garantie 10 ans", "Matériaux premium"]
+    },
+    {
+      id: "2", 
+      name: "Standing Desk Pro",
+      brand: "FlexiWork",
+      image: standingDesk,
+      rating: 4.6,
+      reviewCount: 189,
+      price: "449€",
+      category: "Bureau Debout",
+      isRecommended: false,
+      isBestSeller: true,
+      pros: ["Réglage électrique", "Mémoire de position", "Surface anti-reflets", "Installation facile"]
+    },
+    {
+      id: "3",
+      name: "Accessoires Kit",
+      brand: "ComfortZone", 
+      image: accessories,
+      rating: 4.4,
+      reviewCount: 156,
+      price: "129€",
+      originalPrice: "179€",
+      category: "Accessoires",
+      isRecommended: true,
+      isBestSeller: false,
+      pros: ["Support écran réglable", "Repose-poignet gel", "Tapis ergonomique", "Support laptop"]
+    }
+  ];
+
+  const categories = [
+    {
+      id: "chairs",
+      name: "Chaises Ergonomiques",
+      description: "Chaises de bureau conçues pour votre confort et votre santé posturale",
+      image: heroChair,
+      productCount: 47,
+      icon: <Armchair className="w-6 h-6" />
+    },
+    {
+      id: "desks",
+      name: "Bureaux Debout",
+      description: "Bureaux ajustables pour alterner entre position assise et debout",
+      image: standingDesk,
+      productCount: 23,
+      icon: <Monitor className="w-6 h-6" />
+    },
+    {
+      id: "accessories",
+      name: "Accessoires",
+      description: "Supports, coussins et accessoires pour optimiser votre espace de travail",
+      image: accessories,
+      productCount: 78,
+      icon: <Headphones className="w-6 h-6" />
+    }
+  ];
+
+  const chartData = [
+    { category: 'Confort', score: 9, fullMark: 10 },
+    { category: 'Durabilité', score: 8, fullMark: 10 },
+    { category: 'Design', score: 8.5, fullMark: 10 },
+    { category: 'Prix', score: 7, fullMark: 10 },
+    { category: 'Ergonomie', score: 9.5, fullMark: 10 },
+    { category: 'Montage', score: 6, fullMark: 10 },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        
+        <div className="container mx-auto px-6 py-20 relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-8 animate-fade-in">
+              <div className="space-y-4">
+                <Badge className="bg-primary/10 text-primary border-primary/20">
+                  <Zap className="w-3 h-3 mr-1" />
+                  #1 Site de Reviews Mobilier Ergonomique
+                </Badge>
+                
+                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                  Trouvez le 
+                  <span className="gradient-text block">
+                    mobilier parfait
+                  </span>
+                  pour votre santé
+                </h1>
+                
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  Reviews détaillées, comparatifs experts et recommandations personnalisées 
+                  pour transformer votre espace de travail en environnement ergonomique optimal.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <Button className="btn-gradient text-lg px-8 py-3">
+                  Découvrir les reviews
+                </Button>
+                <Button variant="outline" className="text-lg px-8 py-3 border-primary text-primary hover:bg-primary/10">
+                  Quiz personnalisé
+                </Button>
+              </div>
+
+              {/* Stats */}
+              <div className="flex gap-8 pt-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">500+</div>
+                  <div className="text-sm text-muted-foreground">Produits testés</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-secondary">50k+</div>
+                  <div className="text-sm text-muted-foreground">Lecteurs mensuels</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-accent">4.9</div>
+                  <div className="text-sm text-muted-foreground">Note moyenne</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - Hero Image */}
+            <div className="relative animate-float">
+              <div className="glass-card p-8 relative">
+                <img
+                  src={heroChair}
+                  alt="Chaise ergonomique premium"
+                  className="w-full h-auto rounded-2xl"
+                />
+                
+                {/* Floating Rating Card */}
+                <div className="absolute -top-4 -right-4 glass-card p-4 animate-pulse-glow">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-5 h-5 text-warning fill-warning" />
+                    <span className="font-bold text-lg">4.8</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">234 reviews</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Search Bar */}
+          <div className="mt-16 animate-slide-up">
+            <SearchBar />
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-20 bg-gradient-to-b from-transparent to-muted/20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">
+              Explorez par 
+              <span className="gradient-text">catégorie</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Découvrez notre sélection de mobilier ergonomique organisée par catégories
+            </p>
+          </div>
+          
+          <CategoryGrid categories={categories} />
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="text-4xl font-bold mb-4">
+                Produits 
+                <span className="gradient-text">recommandés</span>
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Nos picks d'experts pour votre confort au bureau
+              </p>
+            </div>
+            
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+              Voir tous les produits
+              <ChevronDown className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Review Example Section */}
+      <section className="py-20 bg-gradient-to-b from-muted/20 to-transparent">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">
+              Analyses 
+              <span className="gradient-text">détaillées</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Chaque produit est testé selon 6 critères essentiels
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="glass-card p-6">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                  <Award className="w-6 h-6 text-primary" />
+                  ErgoTech AeroMax Pro
+                </h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-warning fill-warning" />
+                      ))}
+                    </div>
+                    <span className="text-2xl font-bold">4.8/5</span>
+                    <Badge className="bg-success/10 text-success">
+                      Recommandé Expert
+                    </Badge>
+                  </div>
+                  
+                  <p className="text-muted-foreground leading-relaxed">
+                    Une chaise ergonomique exceptionnelle qui combine confort premium, 
+                    durabilité industrielle et design moderne. Parfaite pour les longues 
+                    sessions de travail grâce à son support lombaire ajustable et ses matériaux respirants.
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2 text-success">
+                      <Shield className="w-4 h-4" />
+                      <span className="text-sm">Garantie 10 ans</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-success">
+                      <Users className="w-4 h-4" />
+                      <span className="text-sm">234 reviews</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <ProductRadarChart 
+              data={chartData} 
+              title="Évaluation Multi-Critères"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10">
+        <div className="container mx-auto px-6 text-center">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <h2 className="text-4xl lg:text-5xl font-bold">
+              Prêt à transformer votre 
+              <span className="gradient-text">espace de travail</span> ?
+            </h2>
+            
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Rejoignez des milliers de professionnels qui ont amélioré leur confort 
+              et leur productivité grâce à nos recommandations expertes.
+            </p>
+
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button className="btn-gradient text-lg px-8 py-4">
+                <TrendingUp className="w-5 h-5 mr-2" />
+                Voir le TOP 10 2024
+              </Button>
+              <Button className="btn-gradient-secondary text-lg px-8 py-4">
+                <Star className="w-5 h-5 mr-2" />
+                Quiz personnalisé
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
