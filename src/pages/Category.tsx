@@ -117,30 +117,30 @@ const Category = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 border-b border-border">
-        <div className="container mx-auto px-6 py-12">
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div className="max-w-3xl">
             <Badge className="bg-primary/10 text-primary mb-4">
               Chaises Ergonomiques
             </Badge>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 leading-tight">
               Les meilleures 
-              <span className="gradient-text"> chaises ergonomiques</span> 2024
+              <span className="gradient-text block sm:inline"> chaises ergonomiques</span> 2024
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
               47 chaises testées et comparées par nos experts. Trouvez la chaise 
               parfaite pour votre confort et votre productivité au bureau.
             </p>
             
-            <div className="flex items-center gap-6 mt-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-6">
               <div className="flex items-center gap-2">
-                <Star className="w-5 h-5 text-warning fill-warning" />
-                <span className="font-semibold">4.6/5</span>
-                <span className="text-muted-foreground">Note moyenne</span>
+                <Star className="w-4 h-4 sm:w-5 sm:h-5 text-warning fill-warning" />
+                <span className="font-semibold text-sm sm:text-base">4.6/5</span>
+                <span className="text-muted-foreground text-sm sm:text-base">Note moyenne</span>
               </div>
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-success" />
-                <span className="font-semibold">1,247</span>
-                <span className="text-muted-foreground">Avis vérifiés</span>
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-success" />
+                <span className="font-semibold text-sm sm:text-base">1,247</span>
+                <span className="text-muted-foreground text-sm sm:text-base">Avis vérifiés</span>
               </div>
             </div>
           </div>
@@ -148,19 +148,19 @@ const Category = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
         <SearchBar 
           placeholder="Rechercher dans les chaises ergonomiques..."
           onFilterToggle={() => setShowFilters(!showFilters)}
         />
       </div>
 
-      <div className="container mx-auto px-6 pb-12">
-        <div className="flex gap-8">
+      <div className="container mx-auto px-4 sm:px-6 pb-12">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
           {/* Sidebar Filters */}
           {showFilters && (
-            <div className="w-80 flex-shrink-0">
-              <div className="glass-card p-6 sticky top-6 space-y-8">
+            <div className="w-full lg:w-80 flex-shrink-0">
+              <div className="glass-card p-4 lg:p-6 lg:sticky lg:top-6 space-y-6 lg:space-y-8">
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold">Filtres</h2>
                   <Button variant="ghost" size="sm" className="text-muted-foreground">
@@ -252,11 +252,11 @@ const Category = () => {
           )}
 
           {/* Main Content */}
-          <div className="flex-1 space-y-6">
+          <div className="flex-1 space-y-4 lg:space-y-6">
             {/* Toolbar */}
-            <div className="glass-card p-4 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <span className="text-sm text-muted-foreground">
+            <div className="glass-card p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
+                <span className="text-sm text-muted-foreground whitespace-nowrap">
                   {products.length} produits trouvés
                 </span>
                 <div className="flex items-center gap-1">
@@ -277,19 +277,19 @@ const Category = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
                 <Button 
                   variant="ghost" 
                   size="sm"
                   onClick={() => setShowFilters(!showFilters)}
-                  className="text-muted-foreground"
+                  className="text-muted-foreground lg:hidden justify-center"
                 >
                   <Filter className="w-4 h-4 mr-2" />
-                  Filtres
+                  Filtres {showFilters ? '(masqués)' : ''}
                 </Button>
                 
                 <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-48">
+                  <SelectTrigger className="w-full sm:w-48">
                     <SelectValue placeholder="Trier par" />
                   </SelectTrigger>
                   <SelectContent>
