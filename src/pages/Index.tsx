@@ -101,8 +101,8 @@ const Index = () => {
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
         
-        <div className="container mx-auto px-6 py-20 relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 sm:px-6 py-20 relative">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-8 animate-fade-in">
               <div className="space-y-4">
@@ -111,7 +111,7 @@ const Index = () => {
                   #1 Site de Reviews Mobilier Ergonomique
                 </Badge>
                 
-                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                   Trouvez le 
                   <span className="gradient-text block">
                     mobilier parfait
@@ -119,33 +119,33 @@ const Index = () => {
                   pour votre santé
                 </h1>
                 
-                <p className="text-xl text-muted-foreground leading-relaxed">
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
                   Reviews détaillées, comparatifs experts et recommandations personnalisées 
                   pour transformer votre espace de travail en environnement ergonomique optimal.
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-4">
-                <Button className="btn-gradient text-lg px-8 py-3">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                <Button className="btn-gradient text-base sm:text-lg px-6 sm:px-8 py-3">
                   Découvrir les reviews
                 </Button>
-                <Button variant="outline" className="text-lg px-8 py-3 border-primary text-primary hover:bg-primary/10">
+                <Button variant="outline" className="text-base sm:text-lg px-6 sm:px-8 py-3 border-primary text-primary hover:bg-primary/10">
                   Quiz personnalisé
                 </Button>
               </div>
 
               {/* Stats */}
-              <div className="flex gap-8 pt-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">500+</div>
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 pt-4">
+                <div className="text-center sm:text-left">
+                  <div className="text-xl sm:text-2xl font-bold text-primary">500+</div>
                   <div className="text-sm text-muted-foreground">Produits testés</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-secondary">50k+</div>
+                <div className="text-center sm:text-left">
+                  <div className="text-xl sm:text-2xl font-bold text-secondary">50k+</div>
                   <div className="text-sm text-muted-foreground">Lecteurs mensuels</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-accent">4.9</div>
+                <div className="text-center sm:text-left">
+                  <div className="text-xl sm:text-2xl font-bold text-accent">4.9</div>
                   <div className="text-sm text-muted-foreground">Note moyenne</div>
                 </div>
               </div>
@@ -181,13 +181,13 @@ const Index = () => {
 
       {/* Categories Section */}
       <section className="py-20 bg-gradient-to-b from-transparent to-muted/20">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               Explorez par 
               <span className="gradient-text">catégorie</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Découvrez notre sélection de mobilier ergonomique organisée par catégories
             </p>
           </div>
@@ -198,19 +198,19 @@ const Index = () => {
 
       {/* Featured Products */}
       <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between mb-12">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 lg:mb-12 gap-4 lg:gap-0">
             <div>
-              <h2 className="text-4xl font-bold mb-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
                 Produits 
                 <span className="gradient-text">recommandés</span>
               </h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-lg sm:text-xl text-muted-foreground">
                 Nos picks d'experts pour votre confort au bureau
               </p>
             </div>
             
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto">
               Voir tous les produits
               <ChevronDown className="w-4 h-4 ml-2" />
             </Button>
@@ -226,13 +226,13 @@ const Index = () => {
 
       {/* Review Example Section */}
       <section className="py-20 bg-gradient-to-b from-muted/20 to-transparent">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               Analyses 
               <span className="gradient-text">détaillées</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Chaque produit est testé selon 6 critères essentiels
             </p>
           </div>
@@ -288,24 +288,24 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-bold">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold">
               Prêt à transformer votre 
               <span className="gradient-text">espace de travail</span> ?
             </h2>
             
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
               Rejoignez des milliers de professionnels qui ont amélioré leur confort 
               et leur productivité grâce à nos recommandations expertes.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button className="btn-gradient text-lg px-8 py-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
+              <Button className="btn-gradient text-base sm:text-lg px-6 sm:px-8 py-4">
                 <TrendingUp className="w-5 h-5 mr-2" />
                 Voir le TOP 10 2024
               </Button>
-              <Button className="btn-gradient-secondary text-lg px-8 py-4">
+              <Button className="btn-gradient-secondary text-base sm:text-lg px-6 sm:px-8 py-4">
                 <Star className="w-5 h-5 mr-2" />
                 Quiz personnalisé
               </Button>
