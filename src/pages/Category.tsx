@@ -7,6 +7,8 @@ import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ProductCard } from "@/components/ProductCard";
 import { SearchBar } from "@/components/SearchBar";
+import { SEOHead } from "@/components/SEOHead";
+import { createBreadcrumbStructuredData, createProductStructuredData } from "@/components/StructuredData";
 import heroChair from "@/assets/hero-chair.jpg";
 import standingDesk from "@/assets/standing-desk.jpg";
 import accessories from "@/assets/accessories.jpg";
@@ -113,10 +115,29 @@ const Category = () => {
     );
   };
 
+  const breadcrumbs = [
+    { name: "Accueil", url: "/" },
+    { name: "Chaises Ergonomiques", url: "/category/chaises-ergonomiques" }
+  ];
+
+  const structuredData = [
+    createBreadcrumbStructuredData(breadcrumbs),
+    ...products.slice(0, 3).map(createProductStructuredData) // Add structured data for top products
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead
+        title="Meilleures Chaises Ergonomiques 2024 - Reviews & Comparatifs Experts"
+        description="✅ Découvrez notre sélection des 47 meilleures chaises ergonomiques 2024. Reviews détaillées, comparatifs prix et tests d'experts. Note moyenne: 4.6/5 sur 1,247 avis vérifiés."
+        keywords="chaise ergonomique 2024, meilleure chaise de bureau, siège ergonomique, comparatif chaise bureau, reviews chaises ergonomiques"
+        canonicalUrl="/category/chaises-ergonomiques"
+        type="article"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 border-b border-border">
+      <header className="bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 border-b border-border">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div className="max-w-3xl">
             <Badge className="bg-primary/10 text-primary mb-4">
@@ -145,7 +166,7 @@ const Category = () => {
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Search Bar */}
       <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
@@ -159,7 +180,7 @@ const Category = () => {
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
           {/* Sidebar Filters */}
           {showFilters && (
-            <div className="w-full lg:w-80 flex-shrink-0">
+            <aside className="w-full lg:w-80 flex-shrink-0">
               <div className="glass-card p-4 lg:p-6 lg:sticky lg:top-6 space-y-6 lg:space-y-8">
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold">Filtres</h2>
@@ -248,11 +269,11 @@ const Category = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </aside>
           )}
 
           {/* Main Content */}
-          <div className="flex-1 space-y-4 lg:space-y-6">
+          <main className="flex-1 space-y-4 lg:space-y-6">
             {/* Toolbar */}
             <div className="glass-card p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
@@ -316,18 +337,19 @@ const Category = () => {
                   onClick={() => console.log(`Navigate to product ${product.id}`)}
                 />
               ))}
-            </div>
+             </div>
 
-            {/* Load More */}
-            <div className="text-center py-8">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                Charger plus de produits
-              </Button>
-            </div>
+             {/* Load More */}
+             <div className="text-center py-8">
+               <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                 Charger plus de produits
+               </Button>
+              </div>
+            </main>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

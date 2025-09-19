@@ -7,6 +7,8 @@ import { SearchBar } from "@/components/SearchBar";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { ProductRadarChart } from "@/components/RadarChart";
+import { SEOHead } from "@/components/SEOHead";
+import { createWebsiteStructuredData, createOrganizationStructuredData } from "@/components/StructuredData";
 import heroChair from "@/assets/hero-chair.jpg";
 import standingDesk from "@/assets/standing-desk.jpg";
 import accessories from "@/assets/accessories.jpg";
@@ -95,10 +97,23 @@ const Index = () => {
     { category: 'Montage', score: 6, fullMark: 10 },
   ];
 
+  const structuredData = [
+    createWebsiteStructuredData(),
+    createOrganizationStructuredData()
+  ];
+
   return (
-    <div className="min-h-screen">
+    <>
+      <SEOHead
+        title="Sit Well Seek Wise - Reviews Mobilier Ergonomique & Bureau | Comparatifs Experts 2024"
+        description="✅ Reviews détaillées et comparatifs d'experts pour chaises ergonomiques, bureaux debout et accessoires de bureau. Plus de 500 produits testés. Trouvez votre mobilier ergonomique idéal."
+        keywords="chaise ergonomique, bureau debout, mobilier ergonomique, reviews, comparatifs, bureau, santé posturale, productivité, ergonomie"
+        canonicalUrl="/"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
+      <header className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/30">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
         
         <div className="container mx-auto px-4 sm:px-6 py-20 relative">
@@ -156,8 +171,9 @@ const Index = () => {
               <div className="glass-card p-8 relative">
                 <img
                   src={heroChair}
-                  alt="Chaise ergonomique premium"
+                  alt="Chaise ergonomique AeroMax Pro - Support lombaire ajustable et accoudoirs 4D pour un confort optimal au bureau"
                   className="w-full h-auto rounded-2xl"
+                  loading="eager"
                 />
                 
                 {/* Floating Rating Card */}
@@ -177,7 +193,7 @@ const Index = () => {
             <SearchBar />
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Categories Section */}
       <section className="py-20 bg-gradient-to-b from-transparent to-muted/20">
@@ -314,6 +330,7 @@ const Index = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

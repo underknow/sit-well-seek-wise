@@ -1,7 +1,21 @@
+# Robots.txt for Sit Well Seek Wise - Ergonomic Furniture Reviews
+
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Priority pages for search engines
+Allow: /category/
+Allow: /product/
+
+# Sitemap location
+Sitemap: https://sitwellseekwise.com/sitemap.xml
+
+# Block potential spam bots while allowing legitimate crawlers
 User-agent: Googlebot
 Allow: /
 
-User-agent: Bingbot
+User-agent: Bingbot  
 Allow: /
 
 User-agent: Twitterbot
@@ -10,5 +24,9 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Block known bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

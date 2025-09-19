@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProductRadarChart } from "@/components/RadarChart";
+import { SEOHead } from "@/components/SEOHead";
+import { createProductStructuredData, createBreadcrumbStructuredData, createArticleStructuredData } from "@/components/StructuredData";
 import heroChair from "@/assets/hero-chair.jpg";
 
 const ProductDetail = () => {
@@ -61,29 +63,59 @@ const ProductDetail = () => {
     "Certification": "GREENGUARD Gold, BIFMA"
   };
 
+  const breadcrumbs = [
+    { name: "Accueil", url: "/" },
+    { name: "Chaises Ergonomiques", url: "/category/chaises-ergonomiques" },
+    { name: "AeroMax Pro", url: "/product/aeromax-pro" }
+  ];
+
+  const structuredData = [
+    createProductStructuredData(product),
+    createBreadcrumbStructuredData(breadcrumbs),
+    createArticleStructuredData({
+      title: `Review ${product.name} par ${product.brand} - Test Complet 2024`,
+      description: `Test détaillé de la ${product.name} : confort, ergonomie, durabilité. Notre verdict après 90 jours d'utilisation.`,
+      image: heroChair,
+      url: `/product/${product.id}`,
+      datePublished: "2024-01-15",
+      dateModified: new Date().toISOString()
+    })
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead
+        title={`${product.name} par ${product.brand} - Review Complète & Test 2024 | Sit Well Seek Wise`}
+        description={`✅ Review détaillée ${product.name} ${product.brand} : Note ${product.rating}/5 sur ${product.reviewCount} avis. Prix ${product.price}. Test complet ergonomie, confort, durabilité. Garantie ${product.warranty}.`}
+        keywords={`${product.name}, ${product.brand}, chaise ergonomique, review, test, ${product.category.toLowerCase()}`}
+        canonicalUrl={`/product/${product.id}`}
+        type="article"
+        image={heroChair}
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <div className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+      <nav className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour aux résultats
           </Button>
         </div>
-      </div>
+      </nav>
 
-      <div className="container mx-auto px-6 py-8">
+      <main className="container mx-auto px-6 py-8">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Column - Images */}
           <div className="space-y-4">
             {/* Main Image */}
             <div className="glass-card p-4 aspect-square rounded-2xl overflow-hidden group">
-              <img
-                src={product.images[currentImageIndex]}
-                alt={product.name}
-                className="w-full h-full object-cover rounded-xl group-hover:scale-105 smooth-transition"
-              />
+                  <img
+                    src={product.images[currentImageIndex]}
+                    alt={`${product.name} par ${product.brand} - Vue ${currentImageIndex + 1} - Chaise ergonomique premium avec support lombaire ajustable`}
+                    className="w-full h-full object-cover rounded-xl group-hover:scale-105 smooth-transition"
+                    loading="eager"
+                  />
             </div>
 
             {/* Thumbnail Images */}
@@ -96,11 +128,12 @@ const ProductDetail = () => {
                     currentImageIndex === index ? 'ring-2 ring-primary' : 'hover:ring-1 hover:ring-border'
                   }`}
                 >
-                  <img
-                    src={image}
-                    alt={`${product.name} ${index + 1}`}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
+                    <img
+                      src={image}
+                      alt={`${product.name} ${product.brand} - Image ${index + 1} - Détail chaise ergonomique`}
+                      className="w-full h-full object-cover rounded-lg"
+                      loading="lazy"
+                    />
                 </button>
               ))}
             </div>
@@ -347,8 +380,9 @@ const ProductDetail = () => {
             </TabsContent>
           </Tabs>
         </div>
-      </div>
+      </main>
     </div>
+    </>
   );
 };
 

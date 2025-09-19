@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://sitwellseekwise.com/</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://sitwellseekwise.com/og-image.jpg</image:loc>
+      <image:title>Sit Well Seek Wise - Reviews Mobilier Ergonomique</image:title>
+      <image:caption>Comparatifs et reviews d'experts pour chaises ergonomiques, bureaux debout et accessoires de bureau</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Category Pages -->
+  <url>
+    <loc>https://sitwellseekwise.com/category/chaises-ergonomiques</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://sitwellseekwise.com/category/bureaux-debout</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://sitwellseekwise.com/category/accessoires</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Product Pages -->
+  <url>
+    <loc>https://sitwellseekwise.com/product/aeromax-pro</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sitwellseekwise.com/assets/hero-chair.jpg</image:loc>
+      <image:title>AeroMax Pro ErgoTech - Chaise Ergonomique Premium</image:title>
+      <image:caption>Review complète de la chaise ergonomique AeroMax Pro - Support lombaire ajustable et accoudoirs 4D</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://sitwellseekwise.com/product/standing-desk-pro</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sitwellseekwise.com/assets/standing-desk.jpg</image:loc>
+      <image:title>Standing Desk Pro FlexiWork - Bureau Debout Électrique</image:title>
+      <image:caption>Test du bureau debout Standing Desk Pro avec réglage électrique et mémoire de position</image:caption>
+    </image:image>
+  </url>
+  
+</urlset>
