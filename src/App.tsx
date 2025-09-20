@@ -10,7 +10,14 @@ import ProductDetail from "./pages/ProductDetail";
 import Category from "./pages/Category";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      retry: 1,
+    },
+  },
+});
 
 const App = () => (
   <HelmetProvider>
