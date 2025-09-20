@@ -14,7 +14,249 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          author_name: string | null
+          category_id: string | null
+          content: string
+          created_at: string
+          excerpt: string | null
+          featured_image_url: string | null
+          id: string
+          is_published: boolean | null
+          meta_description: string | null
+          meta_title: string | null
+          published_at: string | null
+          slug: string
+          tags: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_name?: string | null
+          category_id?: string | null
+          content: string
+          created_at?: string
+          excerpt?: string | null
+          featured_image_url?: string | null
+          id?: string
+          is_published?: boolean | null
+          meta_description?: string | null
+          meta_title?: string | null
+          published_at?: string | null
+          slug: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string | null
+          category_id?: string | null
+          content?: string
+          created_at?: string
+          excerpt?: string | null
+          featured_image_url?: string | null
+          id?: string
+          is_published?: boolean | null
+          meta_description?: string | null
+          meta_title?: string | null
+          published_at?: string | null
+          slug?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blog_posts_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          is_active: boolean
+          meta_description: string | null
+          meta_title: string | null
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          meta_description?: string | null
+          meta_title?: string | null
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          meta_description?: string | null
+          meta_title?: string | null
+          name?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      product_comparisons: {
+        Row: {
+          category_id: string | null
+          comparison_criteria: Json | null
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean | null
+          meta_description: string | null
+          meta_title: string | null
+          product_ids: string[]
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category_id?: string | null
+          comparison_criteria?: Json | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          meta_description?: string | null
+          meta_title?: string | null
+          product_ids: string[]
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category_id?: string | null
+          comparison_criteria?: Json | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          meta_description?: string | null
+          meta_title?: string | null
+          product_ids?: string[]
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_comparisons_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          affiliate_commission: number | null
+          affiliate_url: string
+          brand: string | null
+          category_id: string | null
+          cons: Json | null
+          created_at: string
+          description: string | null
+          features: Json | null
+          id: string
+          image_url: string | null
+          is_active: boolean
+          is_featured: boolean | null
+          meta_description: string | null
+          meta_title: string | null
+          name: string
+          original_price: number | null
+          price: number | null
+          pros: Json | null
+          rating: number | null
+          review_count: number | null
+          short_description: string | null
+          slug: string
+          specifications: Json | null
+          updated_at: string
+        }
+        Insert: {
+          affiliate_commission?: number | null
+          affiliate_url: string
+          brand?: string | null
+          category_id?: string | null
+          cons?: Json | null
+          created_at?: string
+          description?: string | null
+          features?: Json | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          is_featured?: boolean | null
+          meta_description?: string | null
+          meta_title?: string | null
+          name: string
+          original_price?: number | null
+          price?: number | null
+          pros?: Json | null
+          rating?: number | null
+          review_count?: number | null
+          short_description?: string | null
+          slug: string
+          specifications?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          affiliate_commission?: number | null
+          affiliate_url?: string
+          brand?: string | null
+          category_id?: string | null
+          cons?: Json | null
+          created_at?: string
+          description?: string | null
+          features?: Json | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          is_featured?: boolean | null
+          meta_description?: string | null
+          meta_title?: string | null
+          name?: string
+          original_price?: number | null
+          price?: number | null
+          pros?: Json | null
+          rating?: number | null
+          review_count?: number | null
+          short_description?: string | null
+          slug?: string
+          specifications?: Json | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
