@@ -1,108 +1,30 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Filter, Grid, List, SortDesc, ArrowUpDown, Star, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCardNew } from "@/components/ProductCardNew";
 import { SearchBar } from "@/components/SearchBar";
 import { SEOHead } from "@/components/SEOHead";
 import { createBreadcrumbStructuredData, createProductStructuredData } from "@/components/StructuredData";
+import { useProducts } from "@/hooks/useProducts";
+import { useCategory } from "@/hooks/useCategories";
+import { Navigation } from "@/components/Navigation";
 import heroChair from "@/assets/hero-chair.jpg";
-import standingDesk from "@/assets/standing-desk.jpg";
-import accessories from "@/assets/accessories.jpg";
 
 const Category = () => {
+  const { slug } = useParams<{ slug: string }>();
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showFilters, setShowFilters] = useState(true);
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState("relevance");
 
-  const products = [
-    {
-      id: "1",
-      name: "AeroMax Pro",
-      brand: "ErgoTech",
-      image: heroChair,
-      rating: 4.8,
-      reviewCount: 234,
-      price: "599€",
-      originalPrice: "799€",
-      category: "Chaise Ergonomique",
-      isRecommended: true,
-      isBestSeller: true,
-      pros: ["Support lombaire ajustable", "Accoudoirs 4D", "Garantie 10 ans"]
-    },
-    {
-      id: "2",
-      name: "ComfortZone Elite",
-      brand: "ErgoTech",
-      image: heroChair,
-      rating: 4.6,
-      reviewCount: 189,
-      price: "449€",
-      category: "Chaise Ergonomique",
-      isRecommended: false,
-      isBestSeller: true,
-      pros: ["Design moderne", "Mesh respirant", "Prix compétitif"]
-    },
-    {
-      id: "3",
-      name: "FlexiSit Advanced",
-      brand: "ComfortCorp",
-      image: heroChair,
-      rating: 4.4,
-      reviewCount: 156,
-      price: "329€",
-      originalPrice: "399€",
-      category: "Chaise Ergonomique",
-      isRecommended: true,
-      isBestSeller: false,
-      pros: ["Support cervical", "Rotation 360°", "Montage facile"]
-    },
-    {
-      id: "4",
-      name: "StandDesk Pro Max",
-      brand: "FlexiWork",
-      image: standingDesk,
-      rating: 4.7,
-      reviewCount: 203,
-      price: "649€",
-      category: "Bureau Debout",
-      isRecommended: true,
-      isBestSeller: true,
-      pros: ["Réglage électrique", "Mémoire positions", "Surface anti-reflets"]
-    },
-    {
-      id: "5",
-      name: "ErgoKit Essential",
-      brand: "ComfortZone",
-      image: accessories,
-      rating: 4.3,
-      reviewCount: 98,
-      price: "159€",
-      category: "Accessoires",
-      isRecommended: false,
-      isBestSeller: false,
-      pros: ["Kit complet", "Installation rapide", "Matériaux durables"]
-    },
-    {
-      id: "6",
-      name: "UltraComfort Deluxe",
-      brand: "PremiumSeating",
-      image: heroChair,
-      rating: 4.9,
-      reviewCount: 312,
-      price: "899€",
-      originalPrice: "1199€",
-      category: "Chaise Ergonomique",
-      isRecommended: true,
-      isBestSeller: true,
-      pros: ["Cuir premium", "Massage intégré", "Garantie à vie"]
-    }
-  ];
+  const { data: products = [], isLoading: isLoadingProducts } = useProducts(slug);
+  const { data: category, isLoading: isLoadingCategory } = useCategory(slug || "");
 
   const brands = ["ErgoTech", "ComfortCorp", "FlexiWork", "ComfortZone", "PremiumSeating"];
   const features = ["Support lombaire", "Accoudoirs réglables", "Mesh respirant", "Garantie étendue"];
@@ -136,6 +58,7 @@ const Category = () => {
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-background">
+        <Navigation />
       {/* Header */}
       <header className="bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 border-b border-border">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -144,12 +67,17 @@ const Category = () => {
               Chaises Ergonomiques
             </Badge>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 leading-tight">
-              Les meilleures 
-              <span className="gradient-text block sm:inline"> chaises ergonomiques</span> 2024
+              {isLoadingCategory ? "Chargement..." : (
+                <>
+                  Les meilleures 
+                  <span className="gradient-text block sm:inline"> {category?.name || "produits"}</span> 2024
+                </>
+              )}
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
-              47 chaises testées et comparées par nos experts. Trouvez la chaise 
-              parfaite pour votre confort et votre productivité au bureau.
+              {isLoadingCategory ? "Chargement des informations..." : (
+                category?.description || `Découvrez notre sélection de ${category?.name} testés et comparés par nos experts.`
+              )}
             </p>
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-6">
@@ -330,13 +258,24 @@ const Category = () => {
                 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" 
                 : "grid-cols-1"
             }`}>
-              {products.map((product) => (
-                <ProductCard 
-                  key={product.id} 
-                  {...product}
-                  onClick={() => console.log(`Navigate to product ${product.id}`)}
-                />
-              ))}
+              {isLoadingProducts ? (
+                <div className="col-span-full text-center py-8">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                  <p className="text-muted-foreground mt-4">Chargement des produits...</p>
+                </div>
+              ) : products.length === 0 ? (
+                <div className="col-span-full text-center py-8">
+                  <p className="text-muted-foreground">Aucun produit trouvé dans cette catégorie.</p>
+                </div>
+              ) : (
+                products.map((product) => (
+                  <ProductCardNew 
+                    key={product.id} 
+                    product={product}
+                    showBuyButton
+                  />
+                ))
+              )}
              </div>
 
              {/* Load More */}
