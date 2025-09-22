@@ -124,10 +124,6 @@ const Index = () => {
               </div>
             </div>
             
-            {/* Search Bar */}
-            <div className="mt-16 animate-slide-up">
-              <SearchBar />
-            </div>
           </div>
         </header>
 
