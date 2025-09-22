@@ -270,14 +270,18 @@ const Index = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
-                <Button className="btn-gradient text-base sm:text-lg px-6 sm:px-8 py-4">
-                  <TrendingUp className="w-5 h-5 mr-2" />
-                  Voir le TOP 10 2024
-                </Button>
-                <Button className="btn-gradient-secondary text-base sm:text-lg px-6 sm:px-8 py-4">
-                  <Star className="w-5 h-5 mr-2" />
-                  Quiz personnalisé
-                </Button>
+                <Link to="/top-10-2025">
+                  <Button className="btn-gradient text-base sm:text-lg px-6 sm:px-8 py-4">
+                    <TrendingUp className="w-5 h-5 mr-2" />
+                    Voir le TOP 10 2025
+                  </Button>
+                </Link>
+                <Link to="/quiz">
+                  <Button className="btn-gradient-secondary text-base sm:text-lg px-6 sm:px-8 py-4">
+                    <Star className="w-5 h-5 mr-2" />
+                    Quiz personnalisé
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

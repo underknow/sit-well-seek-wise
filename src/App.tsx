@@ -11,6 +11,8 @@ import Category from "./pages/Category";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Comparison from "./pages/Comparison";
+import Top10 from "./pages/Top10";
+import Quiz from "./pages/Quiz";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
@@ -38,6 +40,8 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/comparatif/:slug" element={<Comparison />} />
+            <Route path="/top-10-2025" element={<Top10 />} />
+            <Route path="/quiz" element={<Quiz />} />
             <Route path="/admin" element={<Admin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
