@@ -63,11 +63,11 @@ const Index = () => {
                   </Badge>
                   
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                    Trouvez le 
+                    Trouvez le{" "}
                     <span className="gradient-text block">
                       mobilier parfait
                     </span>
-                    pour votre santé
+                    {" "}pour votre santé
                   </h1>
                   
                   <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
@@ -132,7 +132,7 @@ const Index = () => {
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-                Explorez par 
+                Explorez par{" "}
                 <span className="gradient-text">catégorie</span>
               </h2>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -164,7 +164,7 @@ const Index = () => {
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 lg:mb-12 gap-4 lg:gap-0">
               <div>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-                  Produits 
+                  Produits{" "}
                   <span className="gradient-text">recommandés</span>
                 </h2>
                 <p className="text-lg sm:text-xl text-muted-foreground">
@@ -198,7 +198,7 @@ const Index = () => {
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-                Analyses 
+                Analyses{" "}
                 <span className="gradient-text">détaillées</span>
               </h2>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -260,7 +260,7 @@ const Index = () => {
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <div className="max-w-3xl mx-auto space-y-8">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold">
-                Prêt à transformer votre 
+                Prêt à transformer votre{" "}
                 <span className="gradient-text">espace de travail</span> ?
               </h2>
               
